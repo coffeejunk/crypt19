@@ -1,8 +1,16 @@
+PATH
+  remote: .
+  specs:
+    crypt19-rb (1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    rake (10.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  crypt19-rb!
+  rake (~> 10.0.3)
