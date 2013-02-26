@@ -3,7 +3,7 @@ require 'crypt/rc6'
 require 'fileutils'
 
 class TestRC6 < Test::Unit::TestCase
-  
+
   def test_block_size
     assert_equal(16, Crypt::RC6.new([0]*32).block_size(), "Wrong block size")
   end
@@ -14,7 +14,7 @@ class TestRC6 < Test::Unit::TestCase
         Crypt::RC6.new(key)
       }
     end
-    
+
     ["1234567890123456","123456789012345678901234"].each do |key|
       assert_nothing_raised() {
         Crypt::RC6.new(key)

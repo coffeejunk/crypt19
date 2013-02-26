@@ -15,7 +15,7 @@ module Crypt
         puts "is #{minimumnew_length} bytes which allows for no noise in the message."
         puts "You should choose an obscured length of at least double the clear text"
         puts "length, such as #{message.length / 8 * 32} bytes"
-        raise "Insufficient length for noisy message" 
+        raise "Insufficient length for noisy message"
       end
       bitmap = []
       usable_noisy_message_length.times { bitmap << false }
@@ -30,7 +30,7 @@ module Crypt
           positions_selected = positions_selected.next
         end
       end
-    
+
       noisy_message = ""
       0.upto(bitmap_size-1) { |byte|
         c = 0
@@ -56,17 +56,17 @@ module Crypt
       }
       return(noisy_message)
     end
-  
-  
+
+
     def remove_noise
       noisy_message = self
       bitmap_size = noisy_message.length / 9
       actual_message_length =  bitmap_size * 8
-    
+
       actual_message_start = bitmap_size
       actual_message_finish = bitmap_size + actual_message_length - 1
       actual_message = noisy_message[actual_message_start..actual_message_finish]
-    
+
       bitmap = []
       0.upto(bitmap_size - 1) { |byte|
         c = noisy_message[byte]
@@ -83,7 +83,7 @@ module Crypt
       }
       return(clear_message)
     end
-  
+
   end
 end
 

@@ -7,17 +7,17 @@ require 'crypt/bytes-compat'
 
 module Crypt
   class Blowfish
-  
+
     include Crypt::CBC
     include Crypt::BlowfishTables
-  
+
     ULONG = 0x100000000
-  
+
     def block_size
       return(8)
     end
-  
-  
+
+
     def initialize(key)
       @key = key
       raise "Bad key length: the key must be 1-56 bytes." unless (key.length.between?(1,56))
@@ -25,8 +25,8 @@ module Crypt
       @s_boxes = []
       setup_blowfish()
     end
-  
-  
+
+
     def f(x)
       a, b, c, d = [x].pack('N').unpack('CCCC')
       y = (@s_boxes[0][a] + @s_boxes[1][b]) % ULONG
@@ -34,8 +34,8 @@ module Crypt
       y = (y + @s_boxes[3][d]) % ULONG
       return(y)
     end
-  
-  
+
+
     def setup_blowfish()
       @s_boxes = Array.new(4) { |i| INITIALSBOXES[i].clone }
       @p_array = INITIALPARRAY.clone
@@ -63,7 +63,7 @@ module Crypt
         }
       }
     end
-  
+
     def encrypt_pair(xl, xr)
       0.upto(15) { |i|
           xl = (xl ^ @p_array[i]) % ULONG
@@ -75,8 +75,8 @@ module Crypt
       xl = (xl ^ @p_array[17]) % ULONG
       return([xl, xr])
     end
-  
-  
+
+
     def decrypt_pair(xl, xr)
       17.downto(2) { |i|
           xl = (xl ^ @p_array[i]) % ULONG
@@ -88,22 +88,22 @@ module Crypt
       xl = (xl ^ @p_array[0]) % ULONG
       return([xl, xr])
     end
-  
-  
+
+
     def encrypt_block(block)
       xl, xr = block.unpack('NN')
       xl, xr = encrypt_pair(xl, xr)
       encrypted = [xl, xr].pack('NN')
       return(encrypted)
     end
-  
-  
+
+
     def decrypt_block(block)
       xl, xr = block.unpack('NN')
       xl, xr = decrypt_pair(xl, xr)
       decrypted = [xl, xr].pack('NN')
       return(decrypted)
     end
-  
+
   end
 end

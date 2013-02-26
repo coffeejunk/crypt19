@@ -4,11 +4,11 @@ require 'crypt/cbc'
 require 'fileutils'
 
 class TestBlowfish < Test::Unit::TestCase
-  
+
   def setup
      @bf = Crypt::Blowfish.new("Who is John Galt?")  # Schneier's test key
   end
-  
+
   def test_block_size
     assert_equal(8, @bf.block_size(), "Wrong block size")
   end
@@ -29,8 +29,8 @@ class TestBlowfish < Test::Unit::TestCase
   end
 
   def test_pair
-    bf = Crypt::Blowfish.new("Who is John Galt?")  
-    orig_l, orig_r = [0xfedcba98, 0x76543210] 
+    bf = Crypt::Blowfish.new("Who is John Galt?")
+    orig_l, orig_r = [0xfedcba98, 0x76543210]
     l, r = bf.encrypt_pair(orig_l, orig_r)
     assert_equal(0xcc91732b, l)
     assert_equal(0x8022f684, r)
@@ -40,19 +40,19 @@ class TestBlowfish < Test::Unit::TestCase
   end
 
   def test_block
-    bf = Crypt::Blowfish.new("Who is John Galt?") 
+    bf = Crypt::Blowfish.new("Who is John Galt?")
     block = "norandom"
     encrypted_block = bf.encrypt_block(block)
     assert_equal("\236\353k\321&Q\"\220", encrypted_block)
     decrypted_block = bf.decrypt_block(encrypted_block)
     assert_equal(block, decrypted_block)
   end
-  
+
   def test_string
     length = 30 + rand(26)
     userkey = ""
     length.times { userkey << rand(256).chr }
-    bf = Crypt::Blowfish.new(userkey) 
+    bf = Crypt::Blowfish.new(userkey)
     string = "This is a string which is not a multiple of 8 characters long"
     encrypted_string = bf.encrypt_string(string)
     decrypted_string = bf.decrypt_string(encrypted_string)
@@ -61,9 +61,9 @@ class TestBlowfish < Test::Unit::TestCase
     encrypted_string = bf.encrypt_string(secondstring)
     decrypted_string = bf.decrypt_string(encrypted_string)
     assert_equal(secondstring, decrypted_string)
-    
+
   end
-  
+
   def test_file
     plain_text = "This is a multi-line string\nwhich is not a multiple of 8 \ncharacters long."
     plain_file = File.new('plain.txt', 'wb+')

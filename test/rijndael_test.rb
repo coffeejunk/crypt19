@@ -12,14 +12,14 @@ class TestRijndael < Test::Unit::TestCase
       rijndael = Crypt::Rijndael.new("Who is this John Galt guy, anyway?", 128, 64)
     }
   end
-  
+
   def test_block_size
     rijndael = Crypt::Rijndael.new("Who is this John Galt guy, anyway?", 128, 256)
     assert_equal(32, rijndael.block_size)
     rijndael = Crypt::Rijndael.new("Who is this John Galt guy, anyway?", 256, 128)
     assert_equal(16, rijndael.block_size)
   end
-  
+
   def test_block
     rijndael = Crypt::Rijndael.new("Who is this John Galt guy, anyway?", 128, 128)
     block = "\341q\214NIj\023u\343\330s\323\354$g\277"
@@ -40,7 +40,7 @@ class TestRijndael < Test::Unit::TestCase
     decrypted_string = rijndael.decrypt_string(encrypted_string)
     assert_equal(string, decrypted_string)
   end
-  
+
   def test_file
     plain_text = "This is a multi-line string\nwhich is not a multiple of 8 \ncharacters long."
     plain_file = File.new('plain.txt', 'wb+')

@@ -1,6 +1,6 @@
 module Crypt
   module StringXor
-  
+
     def ^(a_string)
       a = self.unpack('C'*(self.length))
       b = a_string.unpack('C'*(a_string.length))
@@ -14,7 +14,7 @@ module Crypt
       }
       return(xor)
     end
-  
+
   end
 end
 

@@ -1,4 +1,4 @@
-# IDEA (International Data Encryption Algorithm) by 
+# IDEA (International Data Encryption Algorithm) by
 # Xuejia Lai and James Massey (1992).  Refer to license info at the end of this file.
 
 require 'digest/md5'
@@ -6,25 +6,25 @@ require 'crypt/cbc'
 
 module Crypt
   class IDEA
-  
+
     include Crypt::CBC
-  
+
     ULONG   = 0x100000000
     USHORT  = 0x10000
-  
+
     ENCRYPT = 0
     DECRYPT = 1
-  
-  
+
+
     def block_size
       return(8)
     end
-  
-  
+
+
     def initialize(key128, mode)
       # IDEA is subject to attack unless the key is sufficiently random, so we
       # take an MD5 digest of a variable-length passphrase to ensure a solid key
-      if (key128.class == String)  
+      if (key128.class == String)
         digest = Digest::MD5.digest(key128)
         key128 = digest.unpack('n'*8)
       end
@@ -36,16 +36,16 @@ module Crypt
         @subkeys = generate_decryption_subkeys(key128)
       end
     end
-  
-  
+
+
     def mul(a, b)
       modulus = 0x10001
       return((1 - b) % USHORT) if (a == 0)
       return((1 - a) % USHORT) if (b == 0)
       return((a * b) % modulus)
     end
-  
-  
+
+
     def mul_inv(x)
       modulus = 0x10001
       x = x.to_i % USHORT
@@ -69,8 +69,8 @@ module Crypt
       inv = (1 - t1) & 0xFFFF
       return(inv)
     end
-  
-  
+
+
     def generate_encryption_subkeys(key)
       encrypt_keys = []
       encrypt_keys[0..7] = key.dup
@@ -81,8 +81,8 @@ module Crypt
       }
       return(encrypt_keys)
     end
-  
-  
+
+
     def generate_decryption_subkeys(key)
       encrypt_keys = generate_encryption_subkeys(key)
       decrypt_keys = []
@@ -105,8 +105,8 @@ module Crypt
       }
       return(decrypt_keys)
     end
-  
-  
+
+
     def crypt_pair(l, r)
       word = [l, r].pack('NN').unpack('nnnn')
       k = @subkeys[0..51]
@@ -134,15 +134,15 @@ module Crypt
       two_longs = result.pack('nnnn').unpack('NN')
       return(two_longs)
     end
-  
+
     def encrypt_block(block)
       xl, xr = block.unpack('NN')
       xl, xr = crypt_pair(xl, xr)
       encrypted = [xl, xr].pack('NN')
       return(encrypted)
     end
-  
-  
+
+
     def decrypt_block(block)
       xl, xr = block.unpack('NN')
       xl, xr = crypt_pair(xl, xr)
@@ -165,24 +165,24 @@ end
 # the algorithm for commercial purposes is thus subject to a license from Ascom
 # Systec Ltd. of CH-5506 Maegenwil (Switzerland), being the patentee and sole
 # owner of all rights, including the trademark IDEA.
-# 
+#
 # Commercial purposes shall mean any revenue generating purpose including but
 # not limited to:
-# 
+#
 # i) Using the algorithm for company internal purposes (subject to a site
 #    license).
-# 
+#
 # ii) Incorporating the algorithm into any software and distributing such
 #     software and/or providing services relating thereto to others (subject to
 #     a product license).
-# 
+#
 # iii) Using a product containing the algorithm not covered by an IDEA license
 #      (subject to an end user license).
-# 
+#
 # All such end user license agreements are available exclusively from Ascom
 # Systec Ltd and may be requested via the WWW at http://www.ascom.ch/systec or
 # by email to idea@ascom.ch.
-# 
+#
 # Use other than for commercial purposes is strictly limited to non-revenue
 # generating data transfer between private individuals.  The use by government
 # agencies, non-profit organizations, etc is considered as use for commercial
