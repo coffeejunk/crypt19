@@ -1,0 +1,44 @@
+This work is placed in the public domain.
+Blowfish, GOST, and Rijndael are freely available for use.
+
+HOWEVER
+
+The IDEA algorithm is patented by Ascom and I believe MediaCrypt (a subsidiary) now holds the rights.
+The RC6 algorithm is patented by RSA Security.
+If you want to use the either algorithm for commercial purposes you should seek proper legal advice.
+
+
+# IDEA LICENSE INFORMATION
+#
+# This software product contains the IDEA algorithm as described and claimed in
+# US patent 5,214,703, EPO patent 0482154 (covering Austria, France, Germany,
+# Italy, the Netherlands, Spain, Sweden, Switzerland, and the UK), and Japanese
+# patent application 508119/1991, "Device for the conversion of a digital block
+# and use of same" (hereinafter referred to as "the algorithm").  Any use of
+# the algorithm for commercial purposes is thus subject to a license from Ascom
+# Systec Ltd. of CH-5506 Maegenwil (Switzerland), being the patentee and sole
+# owner of all rights, including the trademark IDEA.
+# 
+# Commercial purposes shall mean any revenue generating purpose including but
+# not limited to:
+# 
+# i) Using the algorithm for company internal purposes (subject to a site
+#    license).
+# 
+# ii) Incorporating the algorithm into any software and distributing such
+#     software and/or providing services relating thereto to others (subject to
+#     a product license).
+# 
+# iii) Using a product containing the algorithm not covered by an IDEA license
+#      (subject to an end user license).
+# 
+# All such end user license agreements are available exclusively from Ascom
+# Systec Ltd and may be requested via the WWW at http://www.ascom.ch/systec or
+# by email to idea@ascom.ch.
+# 
+# Use other than for commercial purposes is strictly limited to non-revenue
+# generating data transfer between private individuals.  The use by government
+# agencies, non-profit organizations, etc is considered as use for commercial
+# purposes but may be subject to special conditions.  Any misuse will be
+# prosecuted.
+
