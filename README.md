@@ -1,4 +1,4 @@
-# crypt [![Build Status](https://travis-ci.org/coffeejunk/crypt19.png?branch=master)](https://travis-ci.org/coffeejunk/crypt19)
+# crypt [![Build Status](https://travis-ci.org/coffeejunk/crypt19.png?branch=master)](https://travis-ci.org/coffeejunk/crypt19) [![Code Climate](https://codeclimate.com/github/coffeejunk/crypt19.png)](https://codeclimate.com/github/coffeejunk/crypt19)
 
 ## Mirror/Fork
 
