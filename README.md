@@ -1,17 +1,35 @@
-# crypt
+# crypt [![Build Status](https://travis-ci.org/coffeejunk/crypt19.png?branch=master)](https://travis-ci.org/coffeejunk/crypt19)
+
+## Mirror/Fork
+
+This is a mirror (or fork if you will) of the crypt19 gem. It vanished from
+rubygems in February of 2013, which made me a very sad panda. I rescued the
+code from my local installation and here it is again..
+
+I will try to continue maintenance, however any help is very welcome!
 
 ## Description
-The Crypt library is a pure-ruby implementation of a number of popular encryption algorithms. Block cyphers currently include Blowfish, GOST, IDEA, Rijndael (AES), and RC6. Cypher Block Chaining (CBC) has been implemented.
 
-Crypt is written entirely in ruby so deployment is simple - no platform concerns, no library dependencies, nothing to compile.
+The Crypt library is a pure-ruby implementation of a number of popular
+encryption algorithms. Block cyphers currently include Blowfish, GOST, IDEA,
+Rijndael (AES), and RC6. Cypher Block Chaining (CBC) has been implemented.
 
-This version is tested on MRI Ruby 1.8.6, 1.8.7, 1.9.1, 1.9.2-preview1, and JRuby 1.4.0.
+Crypt is written entirely in ruby so deployment is simple - no platform
+concerns, no library dependencies, nothing to compile.
 
-## Usage
-TODO See http://crypt.rubyforge.org/ for now.
+## Testing
+
+Tests run on [Travis CI](https://travis-ci.org/coffeejunk/crypt19). It
+currently is verified to work on the following ruby versions:
+
+* mri 1.8.7
+* mri 1.9.3
+* jruby 1.8 mode
+* rubinius 1.8 mode
+* rubinius 1.9 mode
 
 ## Installation
-    gem install crypt19
+    gem install crypt19-rb
 
 ## Credits
 ### Contributors
