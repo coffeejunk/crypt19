@@ -1,3 +1,4 @@
+# coding: ASCII
 require 'test/unit'
 require 'crypt/rc6'
 require 'fileutils'

@@ -1,3 +1,4 @@
+# coding: ASCII
 #  Blowfish algorithm by Bruce Schneider
 #  Ported from the reference C code
 

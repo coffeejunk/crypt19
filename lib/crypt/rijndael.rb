@@ -1,3 +1,4 @@
+# coding: ASCII
 # Adapted from the reference C implementation:
 #   rijndael-alg-ref.c   v2.2   March 2002
 #   Reference ANSI C code by Paulo Barreto and Vincent Rijmen
