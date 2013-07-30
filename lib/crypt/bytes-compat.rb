@@ -1,3 +1,4 @@
+# coding: ASCII
 class String
   if RUBY_VERSION =~ /1\.8/
     def getbyte(index)

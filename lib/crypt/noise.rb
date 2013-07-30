@@ -1,3 +1,4 @@
+# coding: ASCII
 # add_noise - take a message and intersperse noise to make a new noisy message of given byte-length
 # remove_noise - take a noisy message and extract the message
 

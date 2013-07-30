@@ -1,3 +1,4 @@
+# coding: ASCII
 #  RC6 symmetric key block cipher
 #  RC6 is a patented encryption algorithm (U.S. Patent 5,724,428 and U.S. Patent 5,835,600)
 #  Ported by Alexey Lapitsky <lex.public@gmail.com> (2009)

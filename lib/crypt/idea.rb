@@ -1,3 +1,4 @@
+# coding: ASCII
 # IDEA (International Data Encryption Algorithm) by
 # Xuejia Lai and James Massey (1992).  Refer to license info at the end of this file.
 

@@ -1,3 +1,4 @@
+# coding: ASCII
 require 'stringio'
 require 'crypt/stringxor'
 

@@ -1,3 +1,4 @@
+# coding: ASCII
 require 'test/unit'
 require 'crypt/blowfish'
 require 'crypt/cbc'
