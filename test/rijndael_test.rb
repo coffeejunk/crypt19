@@ -1,3 +1,4 @@
+# coding: ASCII
 require 'test/unit'
 require 'crypt/rijndael'
 require 'fileutils'
@@ -32,7 +33,7 @@ class TestRijndael < Test::Unit::TestCase
       encrypted_block = rijndael.encrypt_block(block)
     }
   end
-	
+
   def test_string
     rijndael = Crypt::Rijndael.new("Who is this John Galt guy, anyway?")
     string = "This is a string which is not a multiple of 8 characters long"

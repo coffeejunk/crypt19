@@ -1,3 +1,4 @@
+# coding: ASCII
 require 'test/unit'
 require 'crypt/gost'
 require 'fileutils'
@@ -37,7 +38,7 @@ class TestGost < Test::Unit::TestCase
     decrypted_block = gost.decrypt_block(encrypted_block)
     assert_equal(block, decrypted_block)
   end
-	
+
   def test_string
     length = 25 + rand(12)
     userkey = ""

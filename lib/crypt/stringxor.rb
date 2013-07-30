@@ -1,3 +1,4 @@
+# coding: ASCII
 module Crypt
   module StringXor
 

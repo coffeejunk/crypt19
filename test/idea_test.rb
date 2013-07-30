@@ -1,3 +1,4 @@
+# coding: ASCII
 require 'test/unit'
 require 'crypt/idea'
 require 'fileutils'
@@ -36,7 +37,7 @@ class TestIdea < Test::Unit::TestCase
     decrypted_block = idea_de.decrypt_block(encrypted_block)
     assert_equal(block, decrypted_block)
   end
-	
+
   def test_string
     length = 25 + rand(12)
     userkey = ""
