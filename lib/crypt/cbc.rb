@@ -1,4 +1,3 @@
-# coding: ASCII
 require 'stringio'
 require 'crypt/stringxor'
 
@@ -13,7 +12,6 @@ module Crypt
 
 
     def generate_initialization_vector(words)
-      srand(Time.now.to_i)
       vector = ""
       words.times {
         vector << [rand(ULONG)].pack('N')
@@ -22,10 +20,9 @@ module Crypt
     end
 
 
-    def encrypt_stream(plain_stream, crypt_stream)
+    def encrypt_stream(plain_stream, crypt_stream, init_vector = nil)
       # Cypher-block-chain mode
-
-      init_vector = generate_initialization_vector(block_size() / 4)
+      init_vector ||= generate_initialization_vector(block_size() / 4)
       chain = encrypt_block(init_vector)
       crypt_stream.write(chain)
 
@@ -99,10 +96,10 @@ module Crypt
     end
 
 
-    def encrypt_string(plain_text)
+    def encrypt_string(plain_text, init_vector = nil)
       plain_stream = StringIO.new(plain_text)
       crypt_stream = StringIO.new('')
-      encrypt_stream(plain_stream, crypt_stream)
+      encrypt_stream(plain_stream, crypt_stream, init_vector)
       crypt_text = crypt_stream.string
       return(crypt_text)
     end
