@@ -4,11 +4,13 @@
 
 require 'digest/md5'
 require 'crypt/cbc'
+require 'crypt/block_methods'
 
 module Crypt
   class IDEA
 
     include Crypt::CBC
+    include BlockMethods
 
     ULONG   = 0x100000000
     USHORT  = 0x10000

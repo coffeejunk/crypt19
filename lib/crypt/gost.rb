@@ -3,11 +3,14 @@
 # of the Crypto++ project http://www.eskimo.com/~weidai/cryptlib.html
 
 require 'crypt/cbc'
+require 'crypt/block_methods'
 
 module Crypt
   class Gost
 
     include CBC
+
+    include BlockMethods
 
     ULONG   = 0x100000000
 
@@ -117,22 +120,6 @@ module Crypt
         xl ^= f(xr+@key[0])
       }
       return([xr, xl])
-    end
-
-
-    def encrypt_block(block)
-      xl, xr = block.unpack('NN')
-      xl, xr = encrypt_pair(xl, xr)
-      encrypted = [xl, xr].pack('NN')
-      return(encrypted)
-    end
-
-
-    def decrypt_block(block)
-      xl, xr = block.unpack('NN')
-      xl, xr = decrypt_pair(xl, xr)
-      decrypted = [xl, xr].pack('NN')
-      return(decrypted)
     end
 
   end
