@@ -5,12 +5,15 @@
 require 'crypt/cbc'
 require 'crypt/blowfish-tables'
 require 'crypt/bytes-compat'
+require 'crypt/block_methods'
 
 module Crypt
   class Blowfish
 
     include Crypt::CBC
     include Crypt::BlowfishTables
+
+    include BlockMethods
 
     ULONG = 0x100000000
 
@@ -88,22 +91,6 @@ module Crypt
       xr = (xr ^ @p_array[1]) % ULONG
       xl = (xl ^ @p_array[0]) % ULONG
       return([xl, xr])
-    end
-
-
-    def encrypt_block(block)
-      xl, xr = block.unpack('NN')
-      xl, xr = encrypt_pair(xl, xr)
-      encrypted = [xl, xr].pack('NN')
-      return(encrypted)
-    end
-
-
-    def decrypt_block(block)
-      xl, xr = block.unpack('NN')
-      xl, xr = decrypt_pair(xl, xr)
-      decrypted = [xl, xr].pack('NN')
-      return(decrypted)
     end
 
   end
